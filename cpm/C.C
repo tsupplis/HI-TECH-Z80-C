@@ -176,7 +176,7 @@ static int      cbase = 0x0100;
 static char    *cppdef[] = {
     "-DCPM",
     "-DHI_TECH_C",
-    "-DZ80",
+    "-Dz80",
 #ifdef Z280
     "-DZ280",
 #endif
@@ -832,6 +832,8 @@ void compile(char *s)
         if (z280optim)
         {
             i = 0;
+            if (speed)
+                vec[i++] = "-F";
             vec[i++] = cp;
             if (keepas)
                 vec[i++] = strcat(strcpy(tmpbuf, s), ".AS");
